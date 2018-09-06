@@ -23,7 +23,7 @@ await maker.addAccount('myLedger2', { type: 'ledger' };
 
 #### Options
 
-* `accountsLength`: Set this to the number of accounts to fetch. Must also set `choose`; see below. (Default: 1)
+* `accountsLength`: Set this to the number of accounts to fetch. Must also set `choose` if greater than 1; see below. (Default: 1)
 * `path`: Set this to the derivation path to use. (Default: "44'/60'/0'/0/0")
 * `legacy`: Set this to use the old Ledger address derivation method. [More info][paths]
 
