@@ -18,7 +18,7 @@ const maker = Maker.create('http', {
 await maker.authenticate();
 
 // or you can defer setting the account up until later
-await maker.addAccount('myLedger2', { type: 'ledger' };
+await maker.addAccount('myLedger2', { type: 'ledger' });
 ```
 
 #### Options
