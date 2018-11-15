@@ -9,6 +9,7 @@ export default function(maker) {
     const subprovider = LedgerSubProvider(() => Transport.create(), {
       // options: networkId, path, accountsLength, accountsOffset
       accountsLength: settings.accountsLength || 1,
+      networkId: maker.service('web3').networkId(),
       path:
         settings.path ||
         (settings.legacy ? legacyDerivationPath : defaultDerivationPath)
