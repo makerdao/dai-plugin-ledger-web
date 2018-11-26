@@ -1,16 +1,17 @@
 # dai-plugin-ledger-web
+
 A [Dai.js][daijs] plugin for using Ledger in a browser environment.
 
 ### Example usage
 
 ```js
-import LedgerPlugin from '@makerdao/dai-plugin-ledger-web';
-import Maker from '@makerdao/dai';
+import LedgerPlugin from "@makerdao/dai-plugin-ledger-web";
+import Maker from "@makerdao/dai";
 
-const maker = Maker.create('http', {
+const maker = Maker.create("http", {
   plugins: [LedgerPlugin],
   accounts: {
-    myLedger1: { type: 'ledger' }
+    myLedger1: { type: "ledger" }
   }
 });
 
@@ -18,20 +19,21 @@ const maker = Maker.create('http', {
 await maker.authenticate();
 
 // or you can defer setting the account up until later
-await maker.addAccount('myLedger2', { type: 'ledger' });
+await maker.addAccount("myLedger2", { type: "ledger" });
 ```
 
 #### Options
 
-* `accountsLength`: Set this to the number of accounts to fetch. Must also set `choose` if greater than 1; see below. (Default: 1)
-* `path`: Set this to the derivation path to use. (Default: "44'/60'/0'/0/0")
-* `legacy`: Set this to use the old Ledger address derivation method. [More info][paths]
+- `accountsLength`: Set this to the number of accounts to fetch. Must also set `choose` if greater than 1; see below. (Default: 1)
+- `accountsOffset`: Set this to the index offset number to fetch accounts from (Default: 0)
+- `path`: Set this to the derivation path to use. (Default: "44'/60'/0'/0/0")
+- `legacy`: Set this to use the old Ledger address derivation method. [More info][paths]
 
 #### Listing multiple accounts
 
 ```js
-await maker.addAccount('myLedger', {
-  type: 'ledger',
+await maker.addAccount("myLedger", {
+  type: "ledger",
   accountsLength: 10,
   choose: (addresses, callback) => {
     // show the list of addresses in your UI and have the user pick one; then
