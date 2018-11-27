@@ -5,13 +5,13 @@ A [Dai.js][daijs] plugin for using Ledger in a browser environment.
 ### Example usage
 
 ```js
-import LedgerPlugin from "@makerdao/dai-plugin-ledger-web";
-import Maker from "@makerdao/dai";
+import LedgerPlugin from '@makerdao/dai-plugin-ledger-web';
+import Maker from '@makerdao/dai';
 
-const maker = Maker.create("http", {
+const maker = Maker.create('http', {
   plugins: [LedgerPlugin],
   accounts: {
-    myLedger1: { type: "ledger" }
+    myLedger1: { type: 'ledger' }
   }
 });
 
@@ -19,7 +19,7 @@ const maker = Maker.create("http", {
 await maker.authenticate();
 
 // or you can defer setting the account up until later
-await maker.addAccount("myLedger2", { type: "ledger" });
+await maker.addAccount('myLedger2', { type: 'ledger' });
 ```
 
 #### Options
@@ -32,8 +32,8 @@ await maker.addAccount("myLedger2", { type: "ledger" });
 #### Listing multiple accounts
 
 ```js
-await maker.addAccount("myLedger", {
-  type: "ledger",
+await maker.addAccount('myLedger', {
+  type: 'ledger',
   accountsLength: 10,
   choose: (addresses, callback) => {
     // show the list of addresses in your UI and have the user pick one; then

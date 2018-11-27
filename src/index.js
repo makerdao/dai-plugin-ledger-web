@@ -1,16 +1,16 @@
-import LedgerSubProvider from "./vendor/ledger-subprovider";
-import Transport from "@ledgerhq/hw-transport-u2f";
+import LedgerSubProvider from './vendor/ledger-subprovider';
+import Transport from '@ledgerhq/hw-transport-u2f';
 
 const legacyDerivationPath = "44'/60'/0'/0/0";
 const defaultDerivationPath = "44'/60'/0'";
 
 export default function(maker) {
-  maker.service("accounts", true).addAccountType("ledger", async settings => {
+  maker.service('accounts', true).addAccountType('ledger', async settings => {
     const subprovider = LedgerSubProvider(() => Transport.create(), {
       // options: networkId, path, accountsLength, accountsOffset
       accountsOffset: settings.accountsOffset || 0,
       accountsLength: settings.accountsLength || 1,
-      networkId: maker.service("web3").networkId(),
+      networkId: maker.service('web3').networkId(),
       path:
         settings.path ||
         (settings.legacy ? legacyDerivationPath : defaultDerivationPath)
