@@ -8,6 +8,7 @@ export default function(maker) {
   maker.service('accounts', true).addAccountType('ledger', async settings => {
     const subprovider = LedgerSubProvider(() => Transport.create(), {
       // options: networkId, path, accountsLength, accountsOffset
+      accountsOffset: settings.accountsOffset || 0,
       accountsLength: settings.accountsLength || 1,
       networkId: maker.service('web3').networkId(),
       path:
@@ -25,8 +26,8 @@ export default function(maker) {
       }
 
       const addresses = await new Promise((resolve, reject) =>
-        subprovider.getAccounts(
-          (err, addresses) => (err ? reject(err) : resolve(addresses))
+        subprovider.getAccounts((err, addresses) =>
+          err ? reject(err) : resolve(addresses)
         )
       );
 
@@ -43,8 +44,8 @@ export default function(maker) {
       });
     } else {
       address = await new Promise((resolve, reject) =>
-        subprovider.getAccounts(
-          (err, addresses) => (err ? reject(err) : resolve(addresses[0]))
+        subprovider.getAccounts((err, addresses) =>
+          err ? reject(err) : resolve(addresses[0])
         )
       );
     }

@@ -1,4 +1,5 @@
 # dai-plugin-ledger-web
+
 A [Dai.js][daijs] plugin for using Ledger in a browser environment.
 
 ### Example usage
@@ -23,9 +24,10 @@ await maker.addAccount('myLedger2', { type: 'ledger' });
 
 #### Options
 
-* `accountsLength`: Set this to the number of accounts to fetch. Must also set `choose` if greater than 1; see below. (Default: 1)
-* `path`: Set this to the derivation path to use. (Default: "44'/60'/0'/0/0")
-* `legacy`: Set this to use the old Ledger address derivation method. [More info][paths]
+- `accountsLength`: Set this to the number of accounts to fetch. Must also set `choose` if greater than 1; see below. (Default: 1)
+- `accountsOffset`: Set this to the index offset number to fetch accounts from (Default: 0)
+- `path`: Set this to the derivation path to use. (Default: "44'/60'/0'/0/0")
+- `legacy`: Set this to use the old Ledger address derivation method. [More info][paths]
 
 #### Listing multiple accounts
 
