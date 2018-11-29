@@ -52,3 +52,13 @@ You can find an example of this plugin being used in an app [here][accounts].
 [daijs]: https://github.com/makerdao/dai.js
 [accounts]: https://github.com/makerdao/integration-examples/tree/master/accounts
 [paths]: https://github.com/MyCryptoHQ/MyCrypto/issues/2070
+
+### Publishing to NPM
+
+```
+yarn
+// version bump on package.json
+yarn build
+cd /dist
+npm publish
+```
