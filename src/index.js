@@ -1,4 +1,4 @@
-import LedgerSubProvider from './vendor/ledger-subprovider';
+import LedgerSubProvider, { setChosenAddress } from './vendor/ledger-subprovider';
 import Transport from '@ledgerhq/hw-transport-u2f';
 
 const legacyDerivationPath = "44'/60'/0'/0/0";
@@ -42,6 +42,7 @@ export default function(maker) {
           callback
         );
       });
+      setChosenAddress(address);
     } else {
       address = await new Promise((resolve, reject) =>
         subprovider.getAccounts((err, addresses) =>

@@ -8,6 +8,12 @@ import AddressGenerator from './address-generator';
 
 const allowedHdPaths = ["44'/1'", "44'/60'", "44'/61'"];
 
+let chosenAddress;
+
+export function selectChosenAddress(address){
+  chosenAddress=address;
+}
+
 function stripHexPrefix(str) {
   if (typeof str !== 'string') return str;
   return str.replace(/^0x/, '');
@@ -132,6 +138,9 @@ export default function createLedgerSubprovider(
   }
 
   async function signPersonalMessage(msgData) {
+    if(chosenAddress){
+      msgData.from=chosenAddress;
+    }
     const path = addressToPathMap[msgData.from.toLowerCase()];
     if (!path) throw new Error(`address unknown '${msgData.from}'`);
     const transport = await getTransport();
@@ -153,6 +162,9 @@ export default function createLedgerSubprovider(
   }
 
   async function signTransaction(txData) {
+    if(chosenAddress){
+      txData.from=chosenAddress;
+    }
     const path = addressToPathMap[txData.from.toLowerCase()];
     if (!path) throw new Error(`address unknown '${txData.from}'`);
     const transport = await getTransport();
