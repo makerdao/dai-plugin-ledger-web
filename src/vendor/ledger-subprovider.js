@@ -10,7 +10,7 @@ const allowedHdPaths = ["44'/1'", "44'/60'", "44'/61'"];
 
 let chosenAddress;
 
-export function selectChosenAddress(address){
+export function setChosenAddress(address){
   chosenAddress=address;
 }
 
