@@ -8,7 +8,7 @@ A [Dai.js][daijs] plugin for using Ledger in a browser environment.
 import LedgerPlugin from '@makerdao/dai-plugin-ledger-web';
 import Maker from '@makerdao/dai';
 
-const maker = Maker.create('http', {
+const maker = await Maker.create('http', {
   plugins: [LedgerPlugin],
   accounts: {
     myLedger1: { type: 'ledger' }
